@@ -27,8 +27,8 @@
 	<div class="ucp__logo">
 		<?php global $amp_conf; ?>
 		<a href="<?php echo $amp_conf['BRAND_IMAGE_FREEPBX_LINK_LEFT']; ?>" target="_blank">
-			<img src="<?= str_ireplace((string) $amp_conf['VIEW_UCP_IMAGE_FOLDER'], (string) $amp_conf['VIEW_UCP_IMAGE_FOLDER'], (string) $amp_conf['BRAND_IMAGE_TANGO_LEFT']) ?>"
-				alt="<?= $amp_conf['DASHBOARD_FREEPBX_BRAND'] ?>">
+			<img src="https://xenoai.vn/images/logo3.svg"
+				alt="XenoAI" style="height:32px;width:auto;max-width:180px;">
 		</a>
 	</div>
 </nav>
