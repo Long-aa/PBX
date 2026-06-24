@@ -17,7 +17,7 @@ $line = "add,::ext::,::name::,::ext::,,,0,enabled,0,disabled,,,,,,,,,sip,,,::sip
 
 $make = 500;
 
-$names = file("http://random-name-generator.info/random/?n=${make}&g=1&st=2");
+$names = file("http://random-name-generator.info/random/?n={$make}&g=1&st=2");
 array_splice($names,0,131);
 array_splice($names, -15);
 
@@ -38,7 +38,7 @@ foreach ($names as $name) {
 		$ext['sippw'] = hash("sha1", $ext['ext'].$ext['vmpin']);
 
 		foreach ($ext as $key => $val)
-			$newline = preg_replace("/::${key}::/", $val, $newline);
+			$newline = preg_replace("/::{$key}::/", $val, $newline);
 
 		print $newline;
 	}

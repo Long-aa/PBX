@@ -1,7 +1,7 @@
 <?php
 
 class freepbx_db extends DB {
-    function &connect($dsn, $options = array())
+    public static function connect($dsn = null, $options = array())
     {
         $dsninfo = DB::parseDSN($dsn);
         $type = $dsninfo['phptype'];
@@ -16,18 +16,21 @@ class freepbx_db extends DB {
 
         if (isset($options['debug']) && $options['debug'] >= 2) {
             // expose php errors with sufficient debug level
-            include_once "DB/${type}.php";
+            include_once "DB/{$type}.php";
         } else {
-            @include_once "DB/${type}.php";
+            @include_once "DB/{$type}.php";
         }
 
-        $classname = "DB_${type}";
+        $classname = "DB_{$type}";
         if (!class_exists($classname)) {
-            $tmp = PEAR::raiseError(null, DB_ERROR_NOT_FOUND, null, null,
-                                    "Unable to include the DB/{$type}.php"
-                                    . " file for '$dsn'",
-                                    'DB_Error', true);
-            return $tmp;
+            if (class_exists('PEAR')) {
+                $tmp = PEAR::raiseError(null, defined('DB_ERROR_NOT_FOUND') ? DB_ERROR_NOT_FOUND : -1, null, null,
+                                        "Unable to include the DB/{$type}.php"
+                                        . " file for '$dsn'",
+                                        'DB_Error', true);
+                return $tmp;
+            }
+            throw new \Exception("Unable to include the DB/{$type}.php file for '$dsn'");
         }
 
 		include(dirname(__FILE__).'/freepbx_DB_extends.php');
@@ -45,7 +48,11 @@ class freepbx_db extends DB {
         $err = $obj->connect($dsninfo, $obj->getOption('persistent'));
         if (DB::isError($err)) {
             if (is_array($dsn)) {
-                $err->addUserInfo(DB::getDSNString($dsn, true));
+                if (method_exists('DB', 'getDSNString')) {
+                    $err->addUserInfo(DB::getDSNString($dsn, true));
+                } else {
+                    $err->addUserInfo(json_encode($dsn));
+                }
             } else {
                 $err->addUserInfo($dsn);
             }
