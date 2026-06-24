@@ -1,0 +1,280 @@
+#!/usr/bin/php
+<?php
+// Set timeout to prevent hanging
+set_time_limit(60);
+ini_set('max_execution_time', 60);
+
+error_reporting(E_ALL);
+
+// Try to load sysadmin includes (may not exist on all systems)
+if (file_exists('/usr/lib/sysadmin/includes.php')) {
+    require '/usr/lib/sysadmin/includes.php';
+}
+
+// Load FreePBX config
+if (!file_exists('/etc/freepbx.conf')) {
+    echo "Error: /etc/freepbx.conf not found\n";
+    exit(1);
+}
+
+include_once '/etc/freepbx.conf';
+
+/**
+ * Check if a repository string indicates a security repository
+ * Handles various Debian/Ubuntu security repository naming conventions:
+ *   - Debian: bookworm-security, bullseye-security, buster-security, stable-security, oldstable-security, etc.
+ *   - Ubuntu: jammy-security, focal-security, bionic-security, etc.
+ *   - Generic: *-security, *security*, security-*
+ * 
+ * @param string $repo Repository name or comma-separated list of repositories
+ * @return bool True if any repository in the list is a security repository
+ */
+function isSecurityRepository($repo) {
+    if (empty($repo) || !is_string($repo)) {
+        return false;
+    }
+    
+    // Handle comma-separated repository lists
+    $repos = explode(',', $repo);
+    foreach ($repos as $singleRepo) {
+        $singleRepo = trim($singleRepo);
+        if (empty($singleRepo)) {
+            continue;
+        }
+        
+        // Case-insensitive check for "security" anywhere in the repository name
+        // This catches: -security, _security, security, Security, SECURITY, etc.
+        if (stripos($singleRepo, 'security') !== false) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+// Get upgradable packages - run apt list only ONCE and parse for both regular and security
+$upgradablePackages = [];
+$securityPackages = [];
+$output = shell_exec('apt list --upgradable 2>/dev/null');
+if ($output && is_string($output)) {
+    $lines = explode("\n", $output);
+    foreach ($lines as $lineNum => $line) {
+        // Skip empty lines and header line
+        $line = trim($line);
+        if (empty($line) || strpos($line, 'Listing...') !== false) {
+            continue;
+        }
+        
+        // Parse line format: package/repo1,repo2 version arch [upgradable from: old_version]
+        // Examples:
+        //   openssl/oldstable-security,oldstable-security 3.0.17-1~deb12u3 amd64 [upgradable from: 3.0.17-1~deb12u2]
+        //   package/bookworm-security 1.0.0 amd64 [upgradable from: 0.9.0]
+        //   package/bullseye-security,bookworm-security 1.0.0 amd64 [upgradable from: 0.9.0]
+        //   package/stable-security 1.0.0 amd64 [upgradable from: 0.9.0]
+        //   package/jammy-security 1.0.0 amd64 [upgradable from: 0.9.0] (Ubuntu)
+        
+        // More flexible regex to handle various formats and whitespace variations
+        // Pattern breakdown:
+        //   ^(\S+) - package name (non-whitespace)
+        //   \/ - literal slash
+        //   ([^\s]+) - repository part (can contain commas, hyphens, etc., until whitespace)
+        //   \s+ - one or more whitespace
+        //   (\S+) - new version
+        //   \s+ - one or more whitespace
+        //   (\S+) - architecture
+        //   \s+ - one or more whitespace
+        //   \[upgradable from: (\S+)\] - old version in brackets
+        if (preg_match('/^(\S+)\/([^\s]+)\s+(\S+)\s+(\S+)\s+\[upgradable from: (\S+)\]$/', $line, $matches)) {
+            $packageName = isset($matches[1]) ? trim($matches[1]) : '';
+            $repositoryPart = isset($matches[2]) ? trim($matches[2]) : ''; // Repository part after slash (can be comma-separated)
+            $newVersion = isset($matches[3]) ? trim($matches[3]) : '';
+            $arch = isset($matches[4]) ? trim($matches[4]) : '';
+            $oldVersion = isset($matches[5]) ? trim($matches[5]) : '';
+            
+            // Validate we have essential data
+            if (empty($packageName) || empty($newVersion)) {
+                continue;
+            }
+            
+            // Skip FreePBX/Sangoma packages
+            if (
+                strpos($packageName, 'freepbx17') !== false ||
+                strpos($packageName, 'sangoma-pbx17') !== false ||
+                $packageName === 'nodejs' ||
+                strpos($packageName, 'node-') === 0 
+            ) {
+                continue;
+            }
+            
+            $packageData = [
+                'name' => $packageName,
+                'new_version' => $newVersion,
+                'old_version' => $oldVersion,
+            ];
+            
+            // Check if it's a security package by examining the repository part
+            // Uses helper function to handle various Debian/Ubuntu security repository naming conventions
+            $isSecurity = isSecurityRepository($repositoryPart);
+            
+            if ($isSecurity && !empty($repositoryPart)) {
+                // Store the repository information for security packages
+                $packageData['repository'] = $repositoryPart;
+            }
+            
+            // Add security packages to security list
+            if ($isSecurity) {
+                $securityPackages[] = $packageData;
+            } else {
+                // Add to regular upgradable packages (exclude security packages to avoid duplication)
+                $upgradablePackages[] = $packageData;
+            }
+        } else {
+            // Log unparseable lines for debugging (only if line looks like it should be a package)
+            // Skip lines that are clearly not package lines (warnings, errors, etc.)
+            if (preg_match('/^[a-zA-Z0-9]/', $line) && strpos($line, '/') !== false) {
+                // This might be a package line we couldn't parse - could be a format variation
+                // Silently skip for now to avoid cluttering logs, but structure is here for future debugging
+            }
+        }
+    }
+}
+
+// Get held packages - optimized to get all versions in one command
+$heldPackages = [];
+$output = shell_exec('apt-mark showhold 2>/dev/null');
+if ($output && is_string($output)) {
+    $lines = explode("\n", $output);
+    $packageNames = [];
+    foreach ($lines as $line) {
+        // Handle null/empty values safely
+        $line = is_string($line) ? trim($line) : '';
+        if (!empty($line)) {
+            $packageNames[] = $line;
+        }
+    }
+    
+    // Get all versions in one dpkg-query command instead of one per package
+    if (!empty($packageNames)) {
+        $escapedNames = array_map('escapeshellarg', $packageNames);
+        $namesList = implode(' ', $escapedNames);
+        $versionOutput = shell_exec("dpkg-query -W -f='\${Package}\t\${Version}\n' $namesList 2>/dev/null");
+        
+        // Parse version output into associative array
+        $versions = [];
+        if ($versionOutput && is_string($versionOutput)) {
+            $versionLines = explode("\n", $versionOutput);
+            foreach ($versionLines as $versionLine) {
+                $parts = explode("\t", trim($versionLine));
+                if (count($parts) === 2) {
+                    $versions[$parts[0]] = $parts[1];
+                }
+            }
+        }
+        
+        // Build held packages array
+        foreach ($packageNames as $pkgName) {
+            $heldPackages[] = [
+                'name' => $pkgName,
+                'version' => isset($versions[$pkgName]) ? $versions[$pkgName] : 'Unknown'
+            ];
+        }
+    }
+}
+
+// Get repository files and check for Debian 13 upgrade risk
+$repoFiles = [];
+$debian13Risk = false;
+$debian13RiskFiles = [];
+$supportedCodenames = ['bookworm', 'bullseye', 'buster', 'stretch', 'jessie', 'wheezy'];
+
+// Function to check if a repository line is risky
+function checkRepoLineRisk($line, $supportedCodenames) {
+    $line = trim($line);
+    // Skip comments and empty lines
+    if (empty($line) || $line[0] === '#') {
+        return false;
+    }
+    // Check if line contains "stable" or "trixie" (Debian 13)
+    if (preg_match('/\b(stable|trixie)\b/i', $line)) {
+        // Check if the same line also contains a supported codename
+        $hasSupportedCodename = false;
+        foreach ($supportedCodenames as $codename) {
+            if (stripos($line, $codename) !== false) {
+                $hasSupportedCodename = true;
+                break;
+            }
+        }
+        // If it has "stable" or "trixie" but no supported codename, it's risky
+        return !$hasSupportedCodename;
+    }
+    return false;
+}
+
+// Main sources.list
+if (file_exists('/etc/apt/sources.list')) {
+    $content = file_get_contents('/etc/apt/sources.list');
+    if ($content !== false) {
+        $repoFiles['/etc/apt/sources.list'] = $content;
+        $lines = explode("\n", $content);
+        foreach ($lines as $line) {
+            if (checkRepoLineRisk($line, $supportedCodenames)) {
+                $debian13Risk = true;
+                if (!in_array('/etc/apt/sources.list', $debian13RiskFiles)) {
+                    $debian13RiskFiles[] = '/etc/apt/sources.list';
+                }
+                break;
+            }
+        }
+    }
+}
+// Sources in sources.list.d directory
+if (is_dir('/etc/apt/sources.list.d')) {
+    $files = glob('/etc/apt/sources.list.d/*.list');
+    if ($files) {
+        foreach ($files as $file) {
+            $content = file_get_contents($file);
+            if ($content !== false) {
+                $repoFiles[$file] = $content;
+                $lines = explode("\n", $content);
+                foreach ($lines as $line) {
+                    if (checkRepoLineRisk($line, $supportedCodenames)) {
+                        $debian13Risk = true;
+                        if (!in_array($file, $debian13RiskFiles)) {
+                            $debian13RiskFiles[] = $file;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Write data to cache
+try {
+    $freepbx = \FreePBX::Create();
+    $framework = $freepbx->Framework;
+    
+    $data = [
+        'upgradable' => $upgradablePackages,
+        'held' => $heldPackages,
+        'security' => $securityPackages,
+        'repositories' => $repoFiles,
+        'debian13_risk' => $debian13Risk,
+        'debian13_risk_files' => $debian13RiskFiles,
+        'timestamp' => time()
+    ];
+    
+    // Store in cache
+    $framework->setConfig('systemupdates', $data);
+    
+    echo "System updates data written to cache successfully\n";
+    exit(0);
+} catch (\Exception $e) {
+    echo "Error writing system updates data: " . $e->getMessage() . "\n";
+    exit(1);
+} catch (\Throwable $e) {
+    echo "Fatal error: " . $e->getMessage() . "\n";
+    exit(1);
+}
+

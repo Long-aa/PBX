@@ -1,0 +1,29 @@
+npm warn config only Use `--omit=dev` to omit dev dependencies from the install.
+npm warn deprecated node-xmpp-tls-connect@1.0.1: this package is deprecated please use https://github.com/xmppjs/xmpp.js
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated node-xmpp-core@5.0.9: this package is deprecated please use https://github.com/xmppjs/xmpp.js
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated node-uuid@1.4.8: Use uuid module instead
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated node-xmpp-client@3.2.0: this package is deprecated please use https://www.npmjs.com/package/@xmpp/client
+
+added 185 packages, and audited 186 packages in 25s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (3 low, 4 moderate, 3 high, 2 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible, run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
