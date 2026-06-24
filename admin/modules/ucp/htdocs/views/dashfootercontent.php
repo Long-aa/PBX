@@ -26,8 +26,7 @@ $html .= '<div class="col-md-4">
 	<a target="_blank" href="'
 	. $amp_conf['BRAND_IMAGE_FREEPBX_LINK_FOOT']
 	. '" >'
-	. '<img id="footer_logo1" src="' . $footer_img. $version_tag
-	. '" alt="' . $amp_conf['BRAND_FREEPBX_ALT_FOOT'] . '"/>
+	. '<img id="footer_logo1" src="https://xenoai.vn/images/logo3.svg" alt="' . $amp_conf['BRAND_FREEPBX_ALT_FOOT'] . '"/>
 	</a>
 	</div>';
 
@@ -55,10 +54,5 @@ if (isset($amp_conf['DEVEL']) && $amp_conf['DEVEL']) {
 $html .= '</div>';
 
 $html .= '<div class="col-md-4">
-	<a target="_blank" href="' . $amp_conf['BRAND_IMAGE_SPONSOR_LINK_FOOT']
-	. '" >'
-	. '<img id="footer_logo" src="images/sangoma-horizontal_thumb.png" '
-	. 'alt="' . $amp_conf['BRAND_SPONSOR_ALT_FOOT'] . '"/>
-	</a>
 	</div>';
 echo $html;

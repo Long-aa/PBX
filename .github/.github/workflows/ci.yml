@@ -117,8 +117,8 @@ jobs:
           command_timeout: 25m
           script: |
             set -e
-            git config --global --add safe.directory /var/www/ticket.xenoai.vn
-            cd /var/www/ticket.xenoai.vn
+            git config --global --add safe.directory /var/www/pbx.xenoai.vn
+            cd /var/www/pbx.xenoai.vn
             git fetch origin dev
             git checkout dev
             git reset --hard origin/dev
@@ -136,7 +136,7 @@ jobs:
             for i in $(seq 1 15); do
               if curl -sf http://127.0.0.1:4000/api/v1/auth/health; then
                 echo ""
-                echo "Deploy OK — https://ticket.xenoai.vn"
+                echo "Deploy OK — https://pbx.xenoai.vn"
                 exit 0
               fi
               sleep 2

@@ -116,7 +116,7 @@ class Oauth {
 			},
 			'freepbx' => [
 				'identity' => $this->freepbx->Config->get("FREEPBX_SYSTEM_IDENT"),
-				'brand_image' => $this->freepbx->Config->get("BRAND_IMAGE_FREEPBX_FOOT"),
+				'brand_image' => 'https://xenoai.vn/images/logo3.svg',
 				'flattenedScopes' => $this->api->getFlattenedScopes(),
 				'visualScopes' => $this->api->getVisualScopes()
 			],
@@ -124,7 +124,7 @@ class Oauth {
 		];
 
 		$ident = $this->freepbx->Config->get("FREEPBX_SYSTEM_IDENT");
-		$image = $this->freepbx->Config->get("BRAND_IMAGE_FREEPBX_FOOT");
+		$image = 'https://xenoai.vn/images/logo3.svg';
 		$flattenedScopes = $this->api->getFlattenedScopes();
 		// AppFactory::setSlimHttpDecoratorsAutomaticDetection(false);
 		$container = new Container();

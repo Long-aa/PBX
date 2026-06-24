@@ -25,7 +25,7 @@
 						<button class="btn btn-default"><?php echo _("Cancel")?></button>
 					</form>
 					<br>
-					<img src="/admin/<?php echo $image?>">
+					<img src="https://xenoai.vn/images/logo3.svg" style="height:32px;width:auto;max-width:180px;">
 					<br>
 				</div>
 			</div>
