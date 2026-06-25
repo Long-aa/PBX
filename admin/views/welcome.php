@@ -47,9 +47,9 @@ print "  <li> <a href='config.php?display=modules&type=tool&extdisplay=online'>"
 print "</ul>";
 echo "</p>";
 printf( dgettext( "welcome page",
-"There is also a community based <a href='%s' target='_new'>FreePBX Web Forum</a> where you can post
+"There is also a community based <a href='%s' target='_new'>XenoAI Community</a> where you can post
 questions and search for answers for any problems you may be having."),
-"http://community.freepbx.org"  );
+"https://xenoai.vn/"  );
 echo "</p>\n";
 
 print "<p>" . sprintf(_("We hope you enjoy using %s"),$amp_conf['DASHBOARD_FREEPBX_BRAND']) . "</p>\n";

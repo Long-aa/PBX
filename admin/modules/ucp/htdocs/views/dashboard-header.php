@@ -26,7 +26,7 @@
 
 	<div class="ucp__logo">
 		<?php global $amp_conf; ?>
-		<a href="<?php echo $amp_conf['BRAND_IMAGE_FREEPBX_LINK_LEFT']; ?>" target="_blank">
+		<a href="https://xenoai.vn/" target="_blank">
 			<img src="https://xenoai.vn/images/logo3.svg"
 				alt="XenoAI" style="height:32px;width:auto;max-width:180px;">
 		</a>

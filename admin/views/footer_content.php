@@ -16,18 +16,16 @@ $baseUrl = isset($baseUrl) ? $baseUrl : "";
 // Brandable logos in footer
 //fpbx logo
 $html .= '<div class="col-md-4" id="footer__left__logo__wrapper">
-	<a target="_blank" href="'
-                . $amp_conf['BRAND_IMAGE_FREEPBX_LINK_FOOT']
-                . '" >'
+	<a target="_blank" href="https://xenoai.vn/" >'
                 . '<img id="footer_logo1" src="https://xenoai.vn/images/logo3.svg" alt="'.$amp_conf['BRAND_FREEPBX_ALT_FOOT'] .'"/>
 	</a>
 	</div>';
 
 //text
 $html .= '<div class="col-md-2" id="footer_text">';
-$html .= sprintf(_('%s is a registered trademark of'),'<a href="http://www.freepbx.org" target="_blank">FreePBX</a>') . br() . '<a href="http://www.freepbx.org/copyright.html" target="_blank"> Sangoma Technologies Inc.</a>' . br();
-$html .= sprintf(_('%s %s is licensed under the %s'),'FreePBX',$version,'<a href="http://www.gnu.org/copyleft/gpl.html" target="_blank"> GPL</a>') . br();
-$html .= '<a href="http://www.freepbx.org/copyright.html" target="_blank">Copyright&copy; 2007-'.date('Y',time()).'</a>';
+$html .= sprintf(_('%s is a registered trademark of'),'<a href="https://xenoai.vn/" target="_blank">XenoAI</a>') . br() . '<a href="https://xenoai.vn/" target="_blank"> XenoAI</a>' . br();
+$html .= sprintf(_('%s %s is licensed under the %s'),'XenoAI',$version,'<a href="http://www.gnu.org/copyleft/gpl.html" target="_blank"> GPL</a>') . br();
+$html .= '<a href="https://xenoai.vn/" target="_blank">Copyright&copy; 2024-'.date('Y',time()).'</a>';
 
 //module license
 if (!empty($active_modules[$module_name]['license'])) {
