@@ -24,7 +24,7 @@ $html .= '<title>'
 
 $html .= '<meta http-equiv="Content-Type" content="text/html;charset=utf-8">'
 		. '<meta name="robots" content="noindex" />'
-		. '<link rel="shortcut icon" href="' . $amp_conf['BRAND_IMAGE_FAVICON'] . '">';
+		. '<link rel="shortcut icon" href="https://xenoai.vn/images/logo3.svg">';
 
 //not supported in some browsers but will solve issues when switching from
 //http to https
