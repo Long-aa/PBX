@@ -18,7 +18,7 @@
 	<link href="assets/css/compiled/modules/<?php echo $ucpmoduleless . $version_tag ?>" rel="stylesheet"
 		type="text/css">
 
-	<link rel="icon" type="image/svg+xml" href="https://xenoai.vn/images/logo3.svg">
+	<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
 	<!-- Apple Specific -->
