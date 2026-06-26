@@ -266,6 +266,10 @@ class Config {
 		if(!empty($dp)) {
 			$this->remove_conf_settings($dp);
 		}
+		if (isset($this->db_conf_store['DASHBOARD_FREEPBX_BRAND'])) {
+			$this->db_conf_store['DASHBOARD_FREEPBX_BRAND']['value'] = 'XenoAI PBX';
+		}
+		$this->conf['DASHBOARD_FREEPBX_BRAND'] = 'XenoAI PBX';
 	}
 
 	public function exists($keyword) {
@@ -446,6 +450,9 @@ class Config {
 	 *                not exist.
 	 */
 	public function get_conf_setting($keyword, $passthru=false) {
+		if ($keyword === 'DASHBOARD_FREEPBX_BRAND') {
+			return 'XenoAI PBX';
+		}
 		if(isset($this->depreciatedSettings[$keyword])) {
 			return $this->depreciatedSettings[$keyword];
 		}

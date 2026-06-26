@@ -289,7 +289,7 @@ addLoadEvent(function(){
     console.log(("%c%s"), "color: green; font-size: large","'. $amp_conf['DASHBOARD_FREEPBX_BRAND'].'");
     console.log(("Thankyou for using %s"),"'.$amp_conf['DASHBOARD_FREEPBX_BRAND'].'");
     ';
-  if($amp_conf['DASHBOARD_FREEPBX_BRAND'] == 'FreePBX'){
+  if($amp_conf['DASHBOARD_FREEPBX_BRAND'] == 'FreePBX' || $amp_conf['DASHBOARD_FREEPBX_BRAND'] == 'XenoAI PBX'){
   $consolealert .= '
     console.log("If you find bugs you may file a report at http://github.com/FreePBX/issue-tracker/issues");
     console.log("For developer resources visit: http://sangomakb.atlassian.net/wiki/spaces/FP/pages/10289341/Developer+Corner+Home");

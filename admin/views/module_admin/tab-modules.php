@@ -307,7 +307,7 @@ if($online) {
 												<?php } ?>
 												<?php if($trackenable && $module['status'] >= 0 && !empty($module['tracks']) && ($module['status'] != MODULE_STATUS_NEEDUPGRADE)) {?>
 													<tr>
-														<td><a href="#" class="info"><?php echo _("Track")?>:<span><?php echo _("Modules can have separate individual repos or tracks, these tracks can determine what type of updates this module receives. A prime example is that of the beta track. You can select the beta track for this module and FreePBX will give you the highest updates in the beta track or stable. Some Modules will only have one track. Tracks can be disabled in Advanced Settings.<br>Tracks can only be changed after checking online")?></span></a></td>
+														<td><a href="#" class="info"><?php echo _("Track")?>:<span><?php echo _("Modules can have separate individual repos or tracks, these tracks can determine what type of updates this module receives. A prime example is that of the beta track. You can select the beta track for this module and XenoAI PBX will give you the highest updates in the beta track or stable. Some Modules will only have one track. Tracks can be disabled in Advanced Settings.<br>Tracks can only be changed after checking online")?></span></a></td>
 														<td>
 															<span class="moduletrackradios">
 															<?php

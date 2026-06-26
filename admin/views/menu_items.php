@@ -55,6 +55,12 @@ if(false) {
 $connected = FreePBX::create()->astman->connected();
 $menu = array();
 if (isset($fpbx_menu) && is_array($fpbx_menu)) {	// && freepbx_menu.conf not defined
+	if (isset($fpbx_menu['wiki'])) { unset($fpbx_menu['wiki']); }
+	foreach ($fpbx_menu as $k => $v) {
+		if (isset($v['name']) && ($v['name'] == 'FreePBX Support' || $v['name'] == 'XenoAI PBX Support')) {
+			unset($fpbx_menu[$k]);
+		}
+	}
 	$out = null;
 	if (empty($favorites)) foreach ($fpbx_menu as $mod => $deets) {
 		$menu[strtolower($deets['category'])][] = $deets;

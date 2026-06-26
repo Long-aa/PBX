@@ -17,7 +17,7 @@
 		 	</p>
 	<?php } ?>
 <?php } else { ?>
-	<p><?php echo _('You can upload a tar gzip file containing a FreePBX module from your local system. If a module with the same name already exists, it will be overwritten.')?></p>
+	<p><?php echo _('You can upload a tar gzip file containing a XenoAI PBX module from your local system. If a module with the same name already exists, it will be overwritten.')?></p>
 	<?php echo $repo_select?>
 	<br/>
 	<div class="panel panel-default" style="width: 50%;">
@@ -34,11 +34,11 @@
 				<input type="hidden" name="display" value="modules" />
 				<input type="hidden" name="action" value="upload" />
 				<span id="download-group">
-					<label style="text-decoration:underline"><a href=# class="info"><?php echo _("Download Remote Module")?><span><?php echo _("Typically the direct address of a module tarball where FreePBX will attempt to download remotely and upload locally")?></span></a><br/><input type="text" size="50" name="remotemod" placeholder="http://<path>/<to>/<tarball>" /></label>
+					<label style="text-decoration:underline"><a href=# class="info"><?php echo _("Download Remote Module")?><span><?php echo _("Typically the direct address of a module tarball where XenoAI PBX will attempt to download remotely and upload locally")?></span></a><br/><input type="text" size="50" name="remotemod" placeholder="http://<path>/<to>/<tarball>" /></label>
 					<input id="download" type="submit" value="<?php echo _('Download (From Web)')?>" name="download" />
 				</span>
 				<span id="upload-group" style="display:none;">
-					<label style="text-decoration:underline"><a href=# class="info"><?php echo _("Upload Local Module")?><span><?php echo _("Locally chosen FreePBX module from your system")?></span></a><input type="file" name="uploadmod" /></label>
+					<label style="text-decoration:underline"><a href=# class="info"><?php echo _("Upload Local Module")?><span><?php echo _("Locally chosen XenoAI PBX module from your system")?></span></a><input type="file" name="uploadmod" /></label>
 					<input id="upload" type="submit" value="<?php echo _('Upload (From Hard Disk)')?>" name="upload" />
 				</span>
 			</form>
