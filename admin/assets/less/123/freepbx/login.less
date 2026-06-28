@@ -9,14 +9,26 @@
     display: inline-block;
     background-repeat:no-repeat;
     background-position:center center;
-    background-size: contain;
+    background-size: 126% 126%;
+    border-radius: 50%;
+    overflow: hidden;
     margin: auto 20px;
+    box-shadow: 0 6px 16px rgba(57, 101, 176, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 12px 24px rgba(57, 101, 176, 0.45);
+    }
 }
 .login_item_title {
     display: inline-block;
     width: 150px;
     margin: auto 20px;
     vertical-align: top;
+    padding: 10px 0;
+    &:hover .login_item_text {
+        color: #3965B0;
+    }
 }
 #login_icon_holder {
     width: 80%;

@@ -35,40 +35,65 @@
 ?>
 <style type="text/css">
 	.login_item {
-		background-size: contain !important;
+		background-size: 126% 126% !important;
 		background-position: center center !important;
 		background-repeat: no-repeat !important;
+		border-radius: 50% !important;
+		overflow: hidden !important;
+		box-shadow: 0 6px 16px rgba(57, 101, 176, 0.25) !important;
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+		display: inline-block !important;
+		width: 150px !important;
+		height: 150px !important;
+		margin: 0 auto !important;
+	}
+	.login_item:hover {
+		transform: translateY(-5px) scale(1.04) !important;
+		box-shadow: 0 12px 24px rgba(57, 101, 176, 0.45) !important;
 	}
 	.login_item_title {
 		vertical-align: top !important;
+		padding: 10px 0 !important;
+	}
+	.login_item_text {
+		display: block !important;
+		width: 160px !important;
+		text-align: center !important;
+		margin-top: 15px !important;
+		font-weight: 600 !important;
+		color: #333 !important;
+		transition: color 0.3s ease !important;
+	}
+	.login_item_title:hover .login_item_text {
+		color: #3965B0 !important;
 	}
 </style>
 <div id="login_icon_holder">
 	<div class="login_item_title" style="vertical-align: top;">
-		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
-		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
+		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png);"/>&nbsp;</a>
+		<span class="login_item_text">
 			<?php echo _('XenoAI PBX Administration')?>
 		</span>
 	</div>
 	<?php if (\FreePBX::Modules()->checkStatus('ucp')) { ?>
 		<div class="login_item_title" style="vertical-align: top;">
-			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
-			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
+			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png);"/>&nbsp;</a>
+			<span class="login_item_text">
 				<?php echo _('User Control Panel')?>
 			</span>
 		</div>
 	<?php } ?>
 	<?php if($panel) {?>
 		<div class="login_item_title" style="vertical-align: top;">
-			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
-			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
+			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png);"/>&nbsp;</a>
+			<span class="login_item_text">
 				<?php echo _('Operator Panel') ?>
 			</span>
 		</div>
 	<?php } ?>
 	<div class="login_item_title" style="vertical-align: top;">
-		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
-		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
+		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png);"/>&nbsp;</a>
+		<span class="login_item_text">
 			<?php echo _('Get Support') ?>
 		</span>
 	</div>
