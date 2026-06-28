@@ -35,7 +35,9 @@
 ?>
 <style type="text/css">
 	.login_item {
-		filter: hue-rotate(42deg) saturate(85%) brightness(115%);
+		background-size: contain !important;
+		background-position: center center !important;
+		background-repeat: no-repeat !important;
 	}
 	.login_item_title {
 		vertical-align: top !important;
@@ -43,14 +45,14 @@
 </style>
 <div id="login_icon_holder">
 	<div class="login_item_title" style="vertical-align: top;">
-		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png); filter: hue-rotate(42deg) saturate(85%) brightness(115%);"/>&nbsp;</a>
+		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 			<?php echo _('XenoAI PBX Administration')?>
 		</span>
 	</div>
 	<?php if (\FreePBX::Modules()->checkStatus('ucp')) { ?>
 		<div class="login_item_title" style="vertical-align: top;">
-			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png); filter: hue-rotate(42deg) saturate(85%) brightness(115%);"/>&nbsp;</a>
+			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
 			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 				<?php echo _('User Control Panel')?>
 			</span>
@@ -58,14 +60,14 @@
 	<?php } ?>
 	<?php if($panel) {?>
 		<div class="login_item_title" style="vertical-align: top;">
-			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png); filter: hue-rotate(42deg) saturate(85%) brightness(115%);"/>&nbsp;</a>
+			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
 			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 				<?php echo _('Operator Panel') ?>
 			</span>
 		</div>
 	<?php } ?>
 	<div class="login_item_title" style="vertical-align: top;">
-		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png); filter: hue-rotate(42deg) saturate(85%) brightness(115%);"/>&nbsp;</a>
+		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png); background-size: contain; background-position: center center; background-repeat: no-repeat;"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 			<?php echo _('Get Support') ?>
 		</span>
