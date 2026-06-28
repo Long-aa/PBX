@@ -34,30 +34,30 @@
 	}
 ?>
 <div id="login_icon_holder">
-	<div class="login_item_title">
-		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png);"/>&nbsp;</a>
+	<div class="login_item_title" style="vertical-align: top;">
+		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png?v=<?php echo time(); ?>);"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 			<?php echo _('XenoAI PBX Administration')?>
 		</span>
 	</div>
 	<?php if (\FreePBX::Modules()->checkStatus('ucp')) { ?>
-		<div class="login_item_title">
-			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png);"/>&nbsp;</a>
+		<div class="login_item_title" style="vertical-align: top;">
+			<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png?v=<?php echo time(); ?>);"/>&nbsp;</a>
 			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 				<?php echo _('User Control Panel')?>
 			</span>
 		</div>
 	<?php } ?>
 	<?php if($panel) {?>
-		<div class="login_item_title">
-			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png);"/>&nbsp;</a>
+		<div class="login_item_title" style="vertical-align: top;">
+			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png?v=<?php echo time(); ?>);"/>&nbsp;</a>
 			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 				<?php echo _('Operator Panel') ?>
 			</span>
 		</div>
 	<?php } ?>
-	<div class="login_item_title">
-		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png);"/>&nbsp;</a>
+	<div class="login_item_title" style="vertical-align: top;">
+		<a href="https://xenoai.vn/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png?v=<?php echo time(); ?>);"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
 			<?php echo _('Get Support') ?>
 		</span>
