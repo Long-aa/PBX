@@ -10,7 +10,7 @@ global $_item_sort;
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="config.php?display=index">
+		<a class="navbar-brand" href="https://pbx.xenoai.vn/admin/config.php?display=index">
 			<img src="https://xenoai.vn/images/logo3.svg" alt="<?php echo $amp_conf['BRAND_FREEPBX_ALT_LEFT']; ?>" title="<?php echo $amp_conf['BRAND_FREEPBX_ALT_LEFT']; ?>" id="MENU_BRAND_IMAGE_TANGO_LEFT" data-BRAND_IMAGE_FREEPBX_LINK_LEFT="<?php echo $amp_conf['BRAND_IMAGE_FREEPBX_LINK_LEFT']; ?>" />
 		</a>
 		<div class="collapse navbar-collapse" id="fpbx-menu-collapse">
