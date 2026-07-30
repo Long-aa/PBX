@@ -14,10 +14,21 @@ if ($amp_conf['FORCE_JS_CSS_IMG_DOWNLOAD']) {
 $baseUrl = isset($baseUrl) ? $baseUrl : "";
 
 // Brandable logos in footer
-$html .= '<div class="col-md-12 text-center" id="footer_logo_wrapper" style="text-align: center; padding: 10px 0;">
-	<a target="_blank" href="https://xenoai.vn/">'
-    . '<img id="footer_logo1" src="https://xenoai.vn/images/logo3.svg" alt="XenoAI" style="height: 32px; width: auto; display: inline-block;" />'
-	. '</a>';
+//fpbx logo
+$html .= '<div class="col-md-4" id="footer__left__logo__wrapper">
+	<a target="_blank" href="'
+                . $amp_conf['BRAND_IMAGE_FREEPBX_LINK_FOOT']
+                . '" >'
+                . '<img id="footer_logo1" src="'.$baseUrl.'/admin/'.$amp_conf['BRAND_IMAGE_FREEPBX_FOOT'].$version_tag
+                . '" alt="'.$amp_conf['BRAND_FREEPBX_ALT_FOOT'] .'"/>
+	</a>
+	</div>';
+
+//text
+$html .= '<div class="col-md-2" id="footer_text">';
+$html .= sprintf(_('%s is a registered trademark of'),'<a href="http://www.freepbx.org" target="_blank">FreePBX</a>') . br() . '<a href="http://www.freepbx.org/copyright.html" target="_blank"> Sangoma Technologies Inc.</a>' . br();
+$html .= sprintf(_('%s %s is licensed under the %s'),'FreePBX',$version,'<a href="http://www.gnu.org/copyleft/gpl.html" target="_blank"> GPL</a>') . br();
+$html .= '<a href="http://www.freepbx.org/copyright.html" target="_blank">Copyright&copy; 2007-'.date('Y',time()).'</a>';
 
 //module license
 if (!empty($active_modules[$module_name]['license'])) {
@@ -31,5 +42,13 @@ if (isset($amp_conf['DEVEL']) && $amp_conf['DEVEL']) {
 	$html .= '<br><span id="benchmark_time">Page loaded in ' . $benchmark_time . 's</span>';
 }
 $html .= '</div>';
+
+$html .= '<div class="col-md-4" id="footer__right__logo__wrapper">
+	<a target="_blank" href="' . $amp_conf['BRAND_IMAGE_SPONSOR_LINK_FOOT']
+		. '" >'
+		. '<img id="footer_logo" src="'.$baseUrl.'/admin/' . $amp_conf['BRAND_IMAGE_SPONSOR_FOOT'] . '" '
+		. 'alt="' . $amp_conf['BRAND_SPONSOR_ALT_FOOT'] . '"/>
+	</a>
+	</div>';
 echo $html;
 ?>

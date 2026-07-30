@@ -77,11 +77,7 @@ $alertinfo_set_flag = 0;
 $rvol = get_var( $AGI, "RVOL" );
 $alertinfo = get_var( $AGI, "ALERT_INFO" );
 if ($alertinfo) {
-	if($rvol !=""){
-		$headers['Alert-Info'] = $alertinfo.'\;volume='.$rvol;
-	} else {
-		$headers['Alert-Info'] = $alertinfo;
-	}
+	$headers['Alert-Info'] = $alertinfo;
 }
 
 $sippheader = get_var( $AGI, "SIPADDHEADER" );

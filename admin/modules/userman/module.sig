@@ -15,7 +15,7 @@ hash=sha256
 signedwith=B53D215A755231A3
 signedby='FreePBX Mirror Servers <security@freepbx.org>'
 repo=standard
-timestamp=1778827914.4144
+timestamp=1780898775.2059
 [hashes]
 Api/Rest/Userman.php = 15cdf13d3ea268f99c3d3a35177bf7d709c8dad50e445c48f55ea03b80b6dad4
 Backup.php = 586258267691d057ad1fe6078f7ed577b94dad490cf40ffaccf98778fbcb60db
@@ -40,7 +40,7 @@ functions.inc/auth/modules/Msad.php = 9b9b9c6889504682963352aa014035f78b71d76e38
 functions.inc/auth/modules/Msad2.php = 61264df2287538761d50631253e63b6e471c947991e1aa4fc05c9aa864002cca
 functions.inc/auth/modules/Openldap.php = 5ab590a6b077a4f4d0560e33ba116d47595e2d97407a84ea5f65ab8df285fba4
 functions.inc/auth/modules/Openldap2.php = 861921a0cee97a5f69ea869f8bdccd54a5e46265ec208a7fb536ce98bf1e7e3c
-functions.inc/auth/modules/Scim.php = 299fb242618a738522ca89e69519814e23dab1a4ea0cc5cc8298925f23fc2e92
+functions.inc/auth/modules/Scim.php = 92e282bfac8e0eae4fdc11f28c5f61d38c600a2acba6c79b6f16b946e977f7eb
 functions.inc/auth/modules/Voicemail.php = 75517278341df089be13a9ce944a9c47c7c90db7e4e3a9e5dea8d3a84b2036d8
 functions.inc/auth/modules/msad2/Msad2Schema.class.php = bd94dd94627ba1bf8830661845c647970cb84f21cfb0280a6ac7f1649d4e687d
 functions.inc/auth/modules/openldap2/Openldap2Schema.class.php = 9b91cfbbf755cdc52f481b60abad565be600176cf8be792003f410093aeb16b1
@@ -48,7 +48,7 @@ functions.inc/functions.php = 1e2aa22ade52b8127c18edd1da8d411d6758c50d378f848232
 functions.inc/guihooks.php = a3ebda246a27909b049a8f09b8e3b49f0853bd5c5e97f9730871aa9afc93cc1f
 functions.inc.php = f1b6049617a5da0e1f3717604a440a1ccf0537ba7093ae4f77e9b1c3eb219a5d
 install.php = 1472db9e2703a18f6d0b8608fd63f89586a326a3aba8c22d6029b90d430b646f
-module.xml = 53b1dcbce02d5e0b3d2e19457f35029beb68dd7a2cffadadb37665b68eaac358
+module.xml = 535ae70b90d74d1a6fd67663cb78aba8c00286db055c57f12d6a738cf5d38aac
 page.userman.php = b44256cd2a1f757f262da4b2cad3dbc5800bf4bd70b084709c03aace21a56ba8
 phpunit.xml = e3ced4265e1f6ef7b8e88b23277c585161fc89fea71207e5fcd2e7237268cb2b
 ucp/Userman.class.php = 9206875d6a0968ce59967d8cc5a6a8f944278c3c4bb956fa66d102403d75f91b
@@ -496,7 +496,7 @@ vendor/tightenco/collect/src/Collect/Support/Traits/Tappable.php = 2206441c753d9
 vendor/tightenco/collect/src/Collect/Support/alias.php = f1bde2bb7a2c87493ed54fbb8b384a0784246d8dfeb31feb4707e35a1c894684
 vendor/tightenco/collect/src/Collect/Support/helpers.php = 34d575194f5de3f8693a228b58e156ec18127f145c5d7d7ac595acbddc50dea2
 views/call_activity_group.php = 95e2890944f7f21478b4a5a8c4f08452ef1c32a8478d1a7c22e13ef53fe83a99
-views/directories.php = 2c0033cf1d1046addbc928997fb2a91866f0aaa2b9c8733f3e960dad583aa176
+views/directories.php = 495c7c852b1d1f37217cd6accd4a8db54b2c0ee2b1dc6100681d5b08aee1477e
 views/emails/welcome_text.tpl = 098675b22c784a272a110b5aac18cbe4cc93054490211d791621afe45a9fc269
 views/general.php = f1c37ff16c1ecfe63a0800b99107e747169e468746a8ba05ee1fdc1b67d77dbd
 views/groups.php = 849d8cf37aedab6de3fcaf454a80483357a7709b44da58ee108a64de04625f87
@@ -512,17 +512,17 @@ views/welcome.php = 1dd7f2eebc5a8c4b6fe8187875bebdd5b1ea6b92805c565a9e35546afe03
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.22 (GNU/Linux)
 
-iQIcBAEBAgAGBQJqBsKKAAoJELU9IVp1UjGjvYYP/iri1QHNSeL4WJG1/TZt8CI9
-I/s3SSbYXMFtoXGRZLID2dEXp6bMWnVmCD68pAOfQkg8xqXp+tFqFLtzDa0n/n8U
-fD/BXFWRQuAVZrwJmJ86zJeBs6kMnJ1060fMYdIE4axmtJAeLuUTkGraCpyFGJwh
-kV5g2i2aedYEksDu5SBoTF6nHXLpobdEHMz2AIQAa5CeYyQyPFJ2ruJHN3BlZ0Tu
-9T9D9baLNKX8etxRC7hLvrUINvDB5PQM0sDBWgmRdfhC1ZIsYhxp7pRIvYiz0852
-+aYGzCRKMiYStguE4UZJWs2CnzmZ5MTyyYHy4p5vGfdnOX6D2PWplt2L7FfxzSHC
-lsGkQi1QBe6vnSLQS/geBssbnAnB0OqS9PaRzqL01O2vNismWlHqL0BSOq0LyCI/
-AjT3Js7w+8w3QTgWp4ssPbjcbuxLA12OryQsZxjOaiI+YGX9pjw0j36sdnsxQEFq
-d3e7fgWJHvW7e+jFf60oDvpkIRpcguD8JyoQ4v2ufc1SAhfIq4XvvGkr4iTqJafA
-dCV+O682GiHF0txeOOaTbNsQJWi5NebJhwJyM1QGaM1Js/yeqHXIDid9ek47L8aa
-J6nxGaatjR8+BjBezP1KLcKsdKt+Lv5kS5RQMxnafqq0zLOIRIc3F5rrBNUN5UxI
-J9mL40CgPLHa3ZSPP/lv
-=mJ4M
+iQIcBAEBAgAGBQJqJlvXAAoJELU9IVp1UjGj7rYQAKMgFD1MDjEtqxgzF4NpWxti
+10EbIaj6DzEFKg3PSUo4RiAEWAkgrBk1JrAbmc9ZVgZgMWy2eraMEXTx2p9DBxhq
+oToXZIEaYnHZJu1TFQx9uQjU1siaeuxJyre1vmXMO2wfvuXmvyC9/KYEcpTw3MVe
+QZKTjearVxPybyjLXUTltjVC+pjTL1RZDmFGIH8HI0NKr2TwW5Jr/psHPshTHwTc
+M2RxhL4x+2c78mL2VZQZXkhbcTuZIhL/qEcXrzVYl3a3pirq1LS9GY1VlY5ljw6O
+IddR9lJ2LeHvmylf7CnfnYW+dNDVbBcNhoFi/8uFUc0ZBj261LDs0bCw3O9IDNw+
+FzP0rnJrMDrpaDMXBISiJRxPJGVq0gSjlaFrj7vS8A+x8NqRbSvUuuMyXfb7k2EH
+xf174P7Wi+HICnX3LKdEuaH5DOyCKiYFOFKbcrVUTeeYNSwUDdwSaQ8mSEsu67C9
+UE1sQX54ws68y2QJ1xryA30yM4YcVNRnoWmfzlRxDHdWKTER2u+pcOOGpGFs1ayY
+UB5uA/VujfuPkpvEypr4dT40W8x82DfwvbDFXPanf+kFgQ0RBrzeqnCAlaJj4n0x
+TwpSjCu6yLJciWjDSsc5wAgKhyApTguYtS2mVAoblLl9L4gtloz/oh++JxdSv92B
+W/og4nTKXMjO3xW03yut
+=1S0V
 -----END PGP SIGNATURE-----

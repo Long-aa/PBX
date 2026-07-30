@@ -24,7 +24,7 @@ $html .= '<title>'
 
 $html .= '<meta http-equiv="Content-Type" content="text/html;charset=utf-8">'
 		. '<meta name="robots" content="noindex" />'
-		. '<link rel="shortcut icon" href="https://xenoai.vn/images/logo3.svg">';
+		. '<link rel="shortcut icon" href="' . $amp_conf['BRAND_IMAGE_FAVICON'] . '">';
 
 //not supported in some browsers but will solve issues when switching from
 //http to https
@@ -93,8 +93,8 @@ $html .= '<script type="text/javascript" src="assets/js/FreePBX.js' . $version_t
 $html .= '<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5YXFPYHZ8"></script>';
 $html .= '<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="apple-touch-icon" href="https://xenoai.vn/images/logo3.svg" />
-<link rel="apple-touch-icon-precomposed" href="https://xenoai.vn/images/logo3.svg" />';
+<link rel="apple-touch-icon" href="assets/images/badge.png" />
+<link rel="apple-touch-icon-precomposed" href="assets/images/badge.png" />';
 
 $html .= '</head>';
 

@@ -15,9 +15,9 @@ hash=sha256
 signedwith=B53D215A755231A3
 signedby='FreePBX Mirror Servers <security@freepbx.org>'
 repo=standard
-timestamp=1778480810.8354
+timestamp=1783577983.843
 [hashes]
-Api.class.php = adfeedae28e152bacdcfb40ca080ad1904625deb2ee91d1732d6c60b985cc5dd
+Api.class.php = a9821e2472c8942e20e84fb5013aba68872e0ec04f6129e55f9d05963571fe8b
 ApiGqlHelper.class.php = 899f0b8985b2d5247599d3e0907c920648a7dc68249a3ad80ff5f7f633c11ef9
 Console/Api.class.php = ba96041c3787bf1b72bfdbaa19edfe8693461a2d7c7319c3ae6ae344c0d17984
 Gql/Api.php = 2db681ea1f4bc296a78950e9b80ccb4f6b41c660f584f926fcf3d984dfacab47
@@ -70,7 +70,7 @@ composer.lock = 04faebd82288a9422c8c2a6a91ff60fd87da318f985732975f409c8fe1c041f4
 docs.htaccess = 24919f347f081bbe2d51a380fa0d695bf6a1d2c71d35bc9cc8fccd87a3c5dc4d
 hooks/fwconsole-commands = 77adec1e32f21636cc014d5994766b0d8329e0ac973a2f0ac3d7760759c66cf7
 hooks/logrotate = 3259be971f11e4cfeae61ea192e370def22bc1aa356e9eb660c658009e4189b5
-module.xml = f8ee0e633bea5ca8a07bb5017ee25bd5c2c8eb9119aa059c679aad111df9c044
+module.xml = 911d3da6ecc30905598079729e07e0ea1f29d9e7bcae986e4c0b7d25701cfdaf
 node/index.js = aa2b53e8291474f75500f09402a63adfa5da20c340829fcc0fe56c22fb9e5227
 node/package.json = 1ed38d9e2492896db14421cb898c466502103e6cf279898150af1bdd1cc24601
 node/schema.graphql = c7064363007b9a82fc0a16ad61ae31da448c2289add31aa9991b193d25098d23
@@ -892,17 +892,17 @@ views/userman_config.php = 5b0f89e6fd7195bfd5dd2de90e8288f1f772158ad06149bf24917
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.22 (GNU/Linux)
 
-iQIcBAEBAgAGBQJqAXaqAAoJELU9IVp1UjGjQu4P+weRW05C8Pz79GEQ/Uq+g85z
-P9/zZuwOWXDKrJzOoyC3o2rGwIAUR/zrLBmlKvRaBceUeNPWJNxxPWrTzLpg3FVc
-5MSq+40QydrO2Fd/iiA8ctxRD9rWQCRhst25TGZQWETi7GJgtIec/SUmWf/+yD8w
-Iz8+pcFBy4q06cKPv10WIAbEGFeLbigEgIWJzcqTjICJk6gzJVO+vjd5W2CqtCGy
-A0Eta0MIcpo7biHWsmuZhxwwuEZR+VynRuFnvgD9MMFkhUCcgHdEcNUfO998Pi25
-Xzy5hX7kM3XJvXsUXk39IHznJFPaM1R1v1xOgtl/m2jpTHX79X6yinUwdgyTrl5J
-dJ3qL6zYd/CCERhR2fiGS/NbqgBTDqgLO/Wg1V/raueJtYGGqatf/Wgd6Nyi8iMd
-rTDyWcwvcY1dbW9/7JHG6igby4JNB2VqIzXFkTdhVoA54rtdaPXKiR68b8D5nsOp
-exdHM8AKR4AxpAuf/aozNDU4jeXy9/TiaShsfK8EvagtbrhsMcqs44Mq1sXfxNfK
-tO3yTUmNLGK+mX8buiSlvItxf6mMswJUv4Q5lHw4Fenfw3uQq4XH6+t/gXpPg2b2
-3vROAaGfwS/i2bUqup/w6OA7k9CAM8uNbuftiIlPgdTuO2paq+xg9JFMA1LCE62a
-tdCG12b5mq24X8CNpZBW
-=VJcQ
+iQIcBAEBAgAGBQJqTz1/AAoJELU9IVp1UjGjdMcQAJsh0BxvU3MEbKLViuVBrZnS
+inLzmJgj0/CKooRFBNZGqHyt93hmTpyNObXNqcsoaFU/kcHwiha9MsbJotLibW4B
+lb2BO7b/nJ143YP/6lAyU5133ZQFHTOTNvVG5OQwJfH+We5q5I+sQ0TJjdY6tc0c
+Xt7RxyimBDFxVaJvutOTWs1SEr8wDTTyODA2aW/ps/d0B57B62hW9JVAXbbfuaac
+1B+eaBF9JbrpEHxnJm6Gwz/xg5AvzzusNC+ESWX/TKyPsl/1S+EalCrqEAwiJ5iX
+szj0/YQqhX1oWtA1FysNyKXFCrE2rN50Ihbvn68qGPlMheL7b4jjYskl1ag4nPFd
+v8Y1TJdVFH4lR2O1E5r6c6iM7cys1jt8p89N+ZywvrdfkTnRJiTrf0/CgxhBIhDT
+jqegAH6ltLL42S6igWF9bvUi5Vf63K8xDCB+zztyqcRyZI81guDj9tzxiC19SM4c
+UHRl/DJFouzWfmDVHqj8E+XlCa57oWgqKKmPWT8Po14lcj0gT9dmnV8vGgSSmpr9
+a7uKclSp6T9fkiwSwYeofLH+TsZkZfSWEkAatO0JBtRI3ArPHxNL6s8Dmmdv3OXl
+sMM7GPd31yI7T2iKve0sOB45cnneCzAoCORITNuT4c9/9LrQ4vNGSKHDOzzRLuGY
+XP9PSzUdMZ3JaTOl2RYJ
+=xDUY
 -----END PGP SIGNATURE-----

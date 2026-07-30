@@ -22,11 +22,9 @@ class Blogs {
 				if(!empty($data)) {
 					$title = $data['title'];
 					if(!empty($title)) {
-						$title = str_replace('FreePBX', 'XenoAI PBX', $title);
 						$blogs[] = ["title" => sprintf(_('%s Feed'),$title), "group" => _("Blogs"), "width" => "550px", "order" => $order[$feed] ?? '100', "section" => $i];
 					} else {
-						$feedTitle = str_replace('FreePBX', 'XenoAI PBX', $feed);
-						$blogs[] = ["title" => sprintf(_('%s Feed'),$feedTitle), "group" => _("Blogs"), "width" => "500px", "order" => isset($order[$feed]) ? $order[$feed] : '100', "section" => $i];
+						$blogs[] = ["title" => sprintf(_('%s Feed'),$feed), "group" => _("Blogs"), "width" => "500px", "order" => isset($order[$feed]) ? $order[$feed] : '100', "section" => $i];
 					}
 				}
 				$i++;
