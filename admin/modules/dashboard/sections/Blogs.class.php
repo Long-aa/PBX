@@ -20,7 +20,7 @@ class Blogs {
 			foreach($feeds as $feed) {
 				$data = $this->getFeed($feed);
 				if(!empty($data)) {
-					$title = $data['title'];
+					$title = str_replace('FreePBX', 'XenoAI PBX', $data['title']);
 					if(!empty($title)) {
 						$blogs[] = ["title" => sprintf(_('%s Feed'),$title), "group" => _("Blogs"), "width" => "550px", "order" => $order[$feed] ?? '100', "section" => $i];
 					} else {

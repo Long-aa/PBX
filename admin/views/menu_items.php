@@ -76,6 +76,9 @@ if (isset($fpbx_menu) && is_array($fpbx_menu)) {	// && freepbx_menu.conf not def
 			if (isset($cat[0]['hidden']) && $cat[0]['hidden'] == 'true') {
 				continue;
 			}
+			if (isset($display) && $display == 'noauth' && $cat[0]['name'] == 'FreePBX Support') {
+				continue;
+			}
 			$href = isset($cat[0]['href']) ? $cat[0]['href'] : 'config.php?display=' . $cat[0]['display'];
 			$target = isset($cat[0]['target']) ? ' target="' . $cat[0]['target'] . '"'  : '';
 			$class = $cat[0]['display'] == $display ? 'class="ui-state-highlight"' : '';
@@ -95,6 +98,9 @@ if (isset($fpbx_menu) && is_array($fpbx_menu)) {	// && freepbx_menu.conf not def
 		$items = array();
 		foreach ($cat as $c => $mod) { //modules
 			if (isset($mod['hidden']) && $mod['hidden'] == 'true') {
+				continue;
+			}
+			if (isset($display) && $display == 'noauth' && $mod['name'] == 'FreePBX Support') {
 				continue;
 			}
 			//remove administrators, makes no sense in these modes
